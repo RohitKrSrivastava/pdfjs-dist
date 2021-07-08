@@ -2872,8 +2872,18 @@ var PDFFindController = function () {
     key: '_calculatePhraseMatch',
     value: function _calculatePhraseMatch(query, pageIndex, pageContent) {
       
-      var queryexp = new RegExp(query.replaceAll(/\s*/g, '[\\s]*').replaceAll(/\$/g, '\\$').replaceAll(/\€/g, '\\€').replaceAll(/\£/g, '\\£').replaceAll(/\¥/g, '\\¥')); // Implemented RegEx For AIML Triend Sentence Match.
-    
+      var queryexp = new RegExp(
+                                  query
+                                    .replaceAll(/\s*/g, '[\\s]*').replaceAll(/\$/g, '\\$')
+                                    .replaceAll(/\:/g, '\\:').replaceAll(/\|/g, '\\|')
+                                    .replaceAll(/\./g, '\\.').replaceAll(/\+/g, '\\+')
+                                    .replaceAll(/\?/g, '\\?').replaceAll(/\^/g, '\\^')
+                                    .replaceAll(/\(/g, '\\(').replaceAll(/\)/g, '\\)')
+                                    .replaceAll(/\{/g, '\\{').replaceAll(/\}/g, '\\}')
+                                    
+                                    //.replaceAll(/\[/g, '\\[').replaceAll(/\]/g, '\\]').replaceAll(/\*/g, '\\*')
+                                    ); // Implemented RegEx For AIML Triend Sentence Match.
+      
       var matches = [];
       var queryLen = query.length;
       var matchIdx = -queryLen;
