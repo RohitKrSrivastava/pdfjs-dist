@@ -1,8 +1,8 @@
 {
   "name": "pdfjs-dist-evs",
-  "version": "2.5.207",
+  "version": "2.5.208",
   "main": "build/pdf.js",
-  "description": "Generic build of Mozilla's PDF.js library.",
+  "description": "Generic build of Mozilla's PDF.js library. modified 2.5.207 for thubnil issue",
   "keywords": [
     "Mozilla",
     "pdf",
