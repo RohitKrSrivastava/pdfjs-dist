@@ -3254,6 +3254,9 @@ class PDFFindController {
                                     //.replaceAll(/\[/g, '\\[').replaceAll(/\]/g, '\\]').replaceAll(/\*/g, '\\*')
                                     ); // Implemented RegEx For AIML Triend Sentence Match.
 	  
+
+    var queryexpHandleHyphon  = new RegExp(query.replaceAll(/\s*/g, '.?(\n)?'));    // added new case for handle new line hyphon
+
     const matches = [];
     const queryLen = query.length;
     let matchIdx = -queryLen;
@@ -3262,12 +3265,20 @@ class PDFFindController {
       matchIdx = pageContent.indexOf(query, matchIdx + queryLen);
 
       if (matchIdx === -1) {
-		  var result = pageContent.match(queryexp); // Implemented For AIML Triend Sentence Match.
+		          var result = pageContent.match(queryexp); // Implemented For AIML Triend Sentence Match.
+              
               if (result) {
                   matchIdx = result.index;
                   matches.push(matchIdx);
+              }else{                                   //  added new case for handle new line strarting word hyphon
+                result = pageContent.match(queryexpHandleHyphon);
+                
+                      if (result) {
+                        matchIdx = result.index;
+                        matches.push(matchIdx);
+                      } 
               }   
-		  
+
         break;
       }
 

@@ -1,8 +1,8 @@
 {
   "name": "pdfjs-dist-evs",
-  "version": "2.5.208",
+  "version": "2.5.209",
   "main": "build/pdf.js",
-  "description": "Generic build of Mozilla's PDF.js library. modified 2.5.207 for thubnil issue",
+  "description": "Improve Search handle hyphon case",
   "keywords": [
     "Mozilla",
     "pdf",
