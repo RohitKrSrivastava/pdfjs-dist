@@ -3255,7 +3255,15 @@ class PDFFindController {
                                     ); // Implemented RegEx For AIML Triend Sentence Match.
 	  
 
-    var queryexpHandleHyphon  = new RegExp(query.replaceAll(/\s*/g, '.?(\n)?'));    // added new case for handle new line hyphon
+    var queryexpHandleHyphon  = new RegExp(
+                                  query
+                                    .replaceAll(/\s*/g, '.?(\n)?').replaceAll(/\$/g, '\\$')
+                                    .replaceAll(/\:/g, '\\:').replaceAll(/\|/g, '\\|')
+                                    .replaceAll(/\./g, '\\.').replaceAll(/\+/g, '\\+')
+                                    .replaceAll(/\?/g, '\\?').replaceAll(/\^/g, '\\^')
+                                    .replaceAll(/\(/g, '\\(').replaceAll(/\)/g, '\\)')
+                                    .replaceAll(/\{/g, '\\{').replaceAll(/\}/g, '\\}')
+                                  );    // added new case for handle new line hyphon
 
     const matches = [];
     const queryLen = query.length;
