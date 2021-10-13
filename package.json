@@ -1,8 +1,8 @@
 {
   "name": "pdfjs-dist-evs",
-  "version": "2.5.210",
+  "version": "2.5.211",
   "main": "build/pdf.js",
-  "description": "Improve Search In Pdf for maximum match",
+  "description": "Disable Extention Search for in case of normal search",
   "keywords": [
     "Mozilla",
     "pdf",

@@ -3240,7 +3240,7 @@ class PDFFindController {
     return true;
   }
 
-  _calculatePhraseMatch(query, pageIndex, pageContent, entireWord) {
+  _calculatePhraseMatch(query, pageIndex, pageContent, entireWord, noteProcessingSearch) {
 	  
 	  var queryexp = new RegExp(
                                   query
@@ -3273,6 +3273,7 @@ class PDFFindController {
       matchIdx = pageContent.indexOf(query, matchIdx + queryLen);
 
       if (matchIdx === -1) {
+        if(noteProcessingSearch){
 		          var result = pageContent.match(queryexp); // Implemented For AIML Triend Sentence Match.
               
               if (result) {
@@ -3286,7 +3287,7 @@ class PDFFindController {
                         matches.push(matchIdx);
                       } 
               }   
-
+         }
         break;
       }
 
@@ -3340,7 +3341,8 @@ class PDFFindController {
     const {
       caseSensitive,
       entireWord,
-      phraseSearch
+      phraseSearch,
+      noteProcessingSearch 
     } = this._state;
 
     if (query.length === 0) {
@@ -3353,7 +3355,7 @@ class PDFFindController {
     }
 
     if (phraseSearch) {
-      this._calculatePhraseMatch(query, pageIndex, pageContent, entireWord);
+      this._calculatePhraseMatch(query, pageIndex, pageContent, entireWord, noteProcessingSearch);
     } else {
       this._calculateWordMatch(query, pageIndex, pageContent, entireWord);
     }
